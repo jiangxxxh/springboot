@@ -1,12 +1,14 @@
 package com.springboot.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * 汽车实体类
  *
- * @author JiangXH
+ * @author JiangXh
  */
 public class Car implements Serializable{
     private static final long serialVersionUID = -5821651550212075426L;
@@ -14,6 +16,7 @@ public class Car implements Serializable{
     private Integer id;
     private String name;
     private Double price;
+    @JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss",timezone = "GMT+8")
     private Date createDate;
 
     public Car() {
