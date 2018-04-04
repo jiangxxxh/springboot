@@ -1,6 +1,6 @@
 package com.springboot.controller;
 
-import com.springboot.pojo.Car;
+import com.springboot.domain.Car;
 import com.springboot.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,13 +17,12 @@ import java.util.List;
  * @author JiangXh
  */
 @RestController
-@RequestMapping("/api")
 public class CarController {
 
     @Autowired
     private CarService carService;
 
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "carlist",method = RequestMethod.GET)
     public ResponseEntity<?> list(){
         List<Car> list = carService.list();
 

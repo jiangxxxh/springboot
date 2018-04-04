@@ -1,6 +1,6 @@
 package com.springboot.service;
 
-import com.springboot.pojo.Car;
+import com.springboot.domain.Car;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

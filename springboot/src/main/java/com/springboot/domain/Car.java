@@ -1,4 +1,4 @@
-package com.springboot.pojo;
+package com.springboot.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -16,7 +16,7 @@ public class Car implements Serializable{
     private Integer id;
     private String name;
     private Double price;
-    @JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date createDate;
 
     public Car() {
