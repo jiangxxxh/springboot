@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>carlist</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+<h1>carlist</h1>
+<img th:src="@{/images/felix2.jpg}" alt="felix2" th:width="300px" th:height="500px">
+
+    <h1>标签常用方法</h1>
+    <h3>赋值+字符串拼接</h3>
+    <p th:text="${car.name}">车名:</p>
+    <span th:text="'车的传奇'+${car.name}+'！'"></span>
+    <hr>
+    <h5>字符串拼接简洁的写法</h5>
+    <span th:text="|车的传奇： ${car.name}！|"></span>
+    <hr>
+    <h3>条件判断 If/Unless</h3>
+    <span th:if="${car.price==234234}">恰好234234: if 满足条件</span><br>
+    <span th:unless="${car.price==23423}">太贵234234 : unless满足条件</span><br>
+    <span th:unless="${car.price==234234}">太贵234234 : unless不满足条件</span><br>
+    <hr>
+    <h3>for循环</h3>
+    <table class="table table-striped table-hover">
+        <tr>
+            <td>No.</td>
+            <td>车名</td>
+            <td>价格</td>
+            <td>生产日期</td>
+        </tr>
+        <tr th:each="car:${cars}">
+            <td th:text="${car.id}">id</td>
+            <td th:text="${car.name}">车名</td>
+            <td th:text="${#numbers.formatDecimal(car.price,1,2)}">价格</td>
+            <td th:text="${#dates.format(car.createDate,'yyyy-MM-dd')}">生产日期</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
