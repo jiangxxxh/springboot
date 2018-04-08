@@ -41,6 +41,38 @@
             <td th:text="${#dates.format(car.createDate,'yyyy-MM-dd')}">生产日期</td>
         </tr>
     </table>
+
+    <hr>
+
+    <h1>标准表达式语法</h1>
+    <h3>变量表达式</h3>
+    <span>变量表达式即OGNL表达式（对象导航语言）或sping EL表达式（模型属性）</span>
+    <!-- session 作用域 request 作用域 -->
+
+    <p th:text="|session:${session.car.name}  request:${car.name} |"></p>
+    <hr>
+
+    <h3>选择(*)表达式</h3>
+    <span th:text="*{car.name}"></span>
+    <div th:object="${car}">
+        <span th:text="*{price}"/><br>
+    </div>
+
+    <hr>
+    <h3>URL表达式</h3>
+    <a href="hiThymeleaf">原生：</a><br>
+    <a href="hiThymeleaf?name=jack">原生带参：</a><br>
+    <a href="hiThymeleaf?name=jack&price=120">原生带参：</a><br>
+    <a th:href="@{hiThymeleaf}" th:alt="_blank">Hello Thymeleaf</a><br>
+    <a th:href="@{hiThymeleaf(name=${car.name})}">Hello Thymeleaf</a><br>
+    <a th:href="@{hiThymeleaf(name=${car.name},price=120)}">Hello Thymeleaf</a><br>
+
 </div>
+
+<h1>布局</h1>
+<!-- footer：被包含的文件名，copy是被包含文件中的fragment 名 -->
+<div th:include="footer :: copy"></div>
+<div th:replace="footer :: copy"></div>
+
 </body>
 </html>
