@@ -55,11 +55,11 @@ public class CarFileService {
         sheet.setColumnWidth(3,20*256);
 
 
-        HSSFRow row = sheet.createRow(0);
-        row.setHeight((short)800);
-        HSSFCell cell = row.createCell(0);
-        cell.setCellValue("id");
-        cell.setCellStyle(style1);
+        HSSFRow row = sheet.createRow(0); // 创建行
+        row.setHeight((short)800); // 设置行高
+        HSSFCell cell = row.createCell(0); // 在当前行中创建单元格
+        cell.setCellValue("id"); // 设置单元格中的值
+        cell.setCellStyle(style1); // 设置单元格样式
 
         cell = row.createCell(1);
         cell.setCellValue("name");
@@ -73,6 +73,7 @@ public class CarFileService {
         cell.setCellValue("createDate");
         cell.setCellStyle(style1);
 
+        // 循环读取list 中的值放入单元格中
         for(int i=1;i<=carList.size();i++){
             row = sheet.createRow(i);
             row.setHeight((short)800);
@@ -91,7 +92,7 @@ public class CarFileService {
             cell = row.createCell(3);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String date = sdf.format(carList.get(i-1).getCreateDate());
-            cell.setCellValue(date);
+            cell.setCellValue(date); // 以字符串格式保存日期
             cell.setCellStyle(style1);
         }
         long times = new Date().getTime();
@@ -100,7 +101,7 @@ public class CarFileService {
         if(!file.exists()){
             file.mkdirs();
         }
-        String finalPath = file.getName()+"/"+times+".xls";
+        String finalPath = file.getName()+"/"+times+".xls"; //文件保存到carfile 目录下
         try {
             FileOutputStream os = new FileOutputStream(finalPath);
             wb.write(os);
